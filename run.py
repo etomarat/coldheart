@@ -11,15 +11,6 @@ DHT_PIN  = 4
 class ColdHeart():
   humidity, temp = [0, 0]
   
-  while True:
-    newHumidity, newTemp = self.readSensor()
-    if self.temp != newTemp:
-      self.temp = newTemp
-      self.humidity = newHumidity
-      self.postToSlack()
-      
-    time.sleep(10)
-  
   def readSensor():
     return Adafruit_DHT.read(self.DHT_TYPE, self.DHT_PIN)
     
@@ -31,6 +22,15 @@ class ColdHeart():
   def __init__(self, DHT_TYPE, DHT_PIN):
     self.DHT_TYPE = DHT_TYPE
     self.DHT_PIN = DHT_PIN
+  
+  while True:
+    newHumidity, newTemp = self.readSensor()
+    if self.temp != newTemp:
+      self.temp = newTemp
+      self.humidity = newHumidity
+      self.postToSlack()
+      
+    time.sleep(10)
 
 
 if __name__ == '__main__':
