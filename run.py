@@ -11,10 +11,10 @@ DHT_PIN  = 4
 class ColdHeart():
   humidity, temp = [0, 0]
   
-  def readSensor():
+  def readSensor(self):
     return Adafruit_DHT.read(self.DHT_TYPE, self.DHT_PIN)
     
-  def postToSlack():
+  def postToSlack(self):
     print 'Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(self.temp, self.humidity)
     print temp
     print humidity
