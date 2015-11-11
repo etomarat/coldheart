@@ -12,11 +12,11 @@ class ColdHeart():
   humidity, temp = [0, 0]
   
   while True:
-    newHumidity, newTemp = readSensor()
-    if temp != newTemp:
-      temp = newTemp
-      humidity = newHumidity
-      postToSlack()
+    newHumidity, newTemp = self.readSensor()
+    if self.temp != newTemp:
+      self.temp = newTemp
+      self.humidity = newHumidity
+      self.postToSlack()
       
     time.sleep(10)
   
@@ -24,7 +24,7 @@ class ColdHeart():
     return Adafruit_DHT.read(self.DHT_TYPE, self.DHT_PIN)
     
   def postToSlack():
-    print 'Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temp, humidity)
+    print 'Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(self.temp, self.humidity)
     print temp
     print humidity
   
