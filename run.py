@@ -24,7 +24,7 @@ class ColdHeart():
     self.DHT_PIN = DHT_PIN
   
   while True:
-    newHumidity, newTemp = readSensor()
+    newHumidity, newTemp = readSensor(self)
     if self.temp != newTemp:
       self.temp = newTemp
       self.humidity = newHumidity
